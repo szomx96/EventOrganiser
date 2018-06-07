@@ -24,6 +24,7 @@ namespace Kolokwium
         //public Organiser Og = new Organiser();
 
         public Organiser Org{get; set;}
+        public string[] CBoxElements { get; set; }
         
 
         public string EventName {
@@ -43,11 +44,14 @@ namespace Kolokwium
         {
             get
             {
-                return textBoxDate.Text;
+                return comboBoxDateD.SelectedItem.ToString() + "-" + comboBoxDateM.SelectedItem.ToString() +
+                     "-" + comboBoxDateY.SelectedItem.ToString();
             }
             set
             {
-                textBoxDate.Text = value;
+                comboBoxDateD.Text = value;
+                comboBoxDateM.Text = value;
+                comboBoxDateY.Text = value;            
             }
         }
 
@@ -55,11 +59,13 @@ namespace Kolokwium
 
             get
             {
-                return textBoxTime.Text;
+                return comboBoxTimeHH.SelectedItem.ToString() + ":" + comboBoxTimeMM.SelectedItem.ToString();
             }
             set
             {
-                textBoxTime.Text = value;
+                comboBoxTimeMM.Text = value;
+                comboBoxTimeHH.Text = value;
+                
             }
 
         }
@@ -99,13 +105,16 @@ namespace Kolokwium
                 listBoxEvents.SelectedIndex = value;
             }
         }
+
+        public string[] DateElements { get; set; }
+        public string[] TimeElements { get; set; }
        
 
         public event Action <object, EventArgs> VAddEvent;
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            if (IsNotEmpty(textBoxName) && IsNotEmpty(textBoxDate) && IsNotEmpty(textBoxTime) &&
+            if (IsNotEmpty(textBoxName) && /*IsNotEmpty(textBoxDate) && /*IsNotEmpty(textBoxTime) &&*/
                 IsNotEmpty(textBoxPlace) && IsNotEmpty(textBoxOrganiser))
             {
                 if (VAddEvent != null)
@@ -138,21 +147,32 @@ namespace Kolokwium
         }
 
         public event Action<object, EventArgs> VEditEvent;
+        public event Action<object, EventArgs> VEditClick;
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if(listBoxEvents.SelectedIndex > -1)
             {
-                textBoxName.Text = Org.eventList[SelectedIndex].EventName;
-                textBoxDate.Text = Org.eventList[SelectedIndex].EventDate;
-                textBoxTime.Text = Org.eventList[SelectedIndex].EventTime;
-                textBoxPlace.Text = Org.eventList[SelectedIndex].EventPlace;
-                textBoxOrganiser.Text = Org.eventList[SelectedIndex].EventOrganiser;
 
-                buttonSave.Visible = true;          
+                if (VEditClick != null)
+                {
+                    VEditClick(sender, e);
+
+                    textBoxName.Text = Org.eventList[SelectedIndex].EventName;
+                    comboBoxDateD.Text = DateElements[0];
+                    comboBoxDateM.Text = DateElements[1];
+                    comboBoxDateY.Text = DateElements[2];
+                    comboBoxTimeHH.Text = TimeElements[0];
+                    comboBoxTimeMM.Text = TimeElements[1];
+                    textBoxPlace.Text = Org.eventList[SelectedIndex].EventPlace;
+                    textBoxOrganiser.Text = Org.eventList[SelectedIndex].EventOrganiser;
+
+                    buttonSave.Visible = true;
+                }
             }
 
         }
+       
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -202,8 +222,11 @@ namespace Kolokwium
         private void ClearTextBoxes()
         {
             textBoxName.Clear();
-            textBoxDate.Clear();
-            textBoxTime.Clear();
+            comboBoxDateD.Text = "";
+            comboBoxDateM.Text = "";
+            comboBoxDateY.Text = "";
+            comboBoxTimeHH.Text = "";
+            comboBoxTimeMM.Text = "";
             textBoxPlace.Clear();
             textBoxOrganiser.Clear();
         }
@@ -240,6 +263,22 @@ namespace Kolokwium
             saveFileDialog1.ShowDialog();
             SaveXML.SaveData(Org.eventList, saveFileDialog1.FileName);
         }
+
+        public event Action<object, EventArgs> VCBoxDropDown;
+
+        private void comboBox_DropDown(object sender, EventArgs e)
+        {
+            if(VCBoxDropDown != null)
+            {
+                VCBoxDropDown(sender, e);
+                
+            }            
+        }
+        
+        //string[] ReturnDate()
+        //{
+
+        //}
 
         
     }

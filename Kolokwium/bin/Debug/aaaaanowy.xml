@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <EventName>nazwa1</EventName>
+    <EventDate>05-07-2018</EventDate>
+    <EventTime>05:08</EventTime>
+    <EventPlace>Katowice</EventPlace>
+    <EventOrganiser>ja</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>nazwa2</EventName>
+    <EventDate>21-07-2023</EventDate>
+    <EventTime>12:16</EventTime>
+    <EventPlace>Tam</EventPlace>
+    <EventOrganiser>oni</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>nazwa3</EventName>
+    <EventDate>28-05-2035</EventDate>
+    <EventTime>14:23</EventTime>
+    <EventPlace>Gdzies</EventPlace>
+    <EventOrganiser>wy</EventOrganiser>
+  </Event>
+</ArrayOfEvent>

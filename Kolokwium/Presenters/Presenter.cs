@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Kolokwium.Models;
 using Kolokwium.Views;
 
@@ -22,7 +23,24 @@ namespace Kolokwium.Presenters
             view.VAddEvent += View_AddEvent;
             view.VRemoveEvent += View_RemoveEvent;
             view.VEditEvent += View_EditEvent;
+            view.VCBoxDropDown += View_CBoxDropDownEvent;
+            view.VEditClick += View_VEditClick;
            
+        }
+
+        private void View_VEditClick(object arg1, EventArgs arg2)
+        {
+            view.DateElements = model.getDate(view.Org.eventList[view.SelectedIndex].EventDate);
+            view.TimeElements = model.getTime(view.Org.eventList[view.SelectedIndex].EventTime);          
+
+        }
+
+        private void View_CBoxDropDownEvent(object arg1, EventArgs arg2)
+        {
+            view.CBoxElements = model.GetCBoxElements(arg1);
+            ComboBox cb = arg1 as ComboBox;
+            cb.Items.AddRange(view.CBoxElements);
+            
         }
 
         private void View_RemoveEvent(object arg1, EventArgs arg2)

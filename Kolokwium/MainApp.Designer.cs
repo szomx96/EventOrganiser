@@ -34,13 +34,20 @@
             this.labelOrganiser = new System.Windows.Forms.Label();
             this.labelPlace = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxDate = new System.Windows.Forms.TextBox();
-            this.textBoxTime = new System.Windows.Forms.TextBox();
             this.textBoxPlace = new System.Windows.Forms.TextBox();
             this.textBoxOrganiser = new System.Windows.Forms.TextBox();
             this.buttonAddEvent = new System.Windows.Forms.Button();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.groupBoxNewEvent = new System.Windows.Forms.GroupBox();
+            this.labelDateSep2 = new System.Windows.Forms.Label();
+            this.comboBoxDateY = new System.Windows.Forms.ComboBox();
+            this.labelDateSep1 = new System.Windows.Forms.Label();
+            this.labelTimeSeparator = new System.Windows.Forms.Label();
+            this.comboBoxDateM = new System.Windows.Forms.ComboBox();
+            this.comboBoxTimeMM = new System.Windows.Forms.ComboBox();
+            this.comboBoxDateD = new System.Windows.Forms.ComboBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.comboBoxTimeHH = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.wydarzenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,9 +58,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
+            this.groupBoxMyEvents = new System.Windows.Forms.GroupBox();
             this.groupBoxNewEvent.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBoxMyEvents.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelName
@@ -105,40 +113,26 @@
             // 
             this.textBoxName.Location = new System.Drawing.Point(137, 52);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(133, 22);
+            this.textBoxName.Size = new System.Drawing.Size(203, 22);
             this.textBoxName.TabIndex = 1;
-            // 
-            // textBoxDate
-            // 
-            this.textBoxDate.Location = new System.Drawing.Point(137, 97);
-            this.textBoxDate.Name = "textBoxDate";
-            this.textBoxDate.Size = new System.Drawing.Size(133, 22);
-            this.textBoxDate.TabIndex = 6;
-            // 
-            // textBoxTime
-            // 
-            this.textBoxTime.Location = new System.Drawing.Point(137, 139);
-            this.textBoxTime.Name = "textBoxTime";
-            this.textBoxTime.Size = new System.Drawing.Size(133, 22);
-            this.textBoxTime.TabIndex = 7;
             // 
             // textBoxPlace
             // 
             this.textBoxPlace.Location = new System.Drawing.Point(137, 184);
             this.textBoxPlace.Name = "textBoxPlace";
-            this.textBoxPlace.Size = new System.Drawing.Size(133, 22);
-            this.textBoxPlace.TabIndex = 8;
+            this.textBoxPlace.Size = new System.Drawing.Size(203, 22);
+            this.textBoxPlace.TabIndex = 7;
             // 
             // textBoxOrganiser
             // 
             this.textBoxOrganiser.Location = new System.Drawing.Point(137, 226);
             this.textBoxOrganiser.Name = "textBoxOrganiser";
-            this.textBoxOrganiser.Size = new System.Drawing.Size(133, 22);
-            this.textBoxOrganiser.TabIndex = 9;
+            this.textBoxOrganiser.Size = new System.Drawing.Size(203, 22);
+            this.textBoxOrganiser.TabIndex = 8;
             // 
             // buttonAddEvent
             // 
-            this.buttonAddEvent.Location = new System.Drawing.Point(179, 272);
+            this.buttonAddEvent.Location = new System.Drawing.Point(249, 273);
             this.buttonAddEvent.Name = "buttonAddEvent";
             this.buttonAddEvent.Size = new System.Drawing.Size(91, 28);
             this.buttonAddEvent.TabIndex = 10;
@@ -150,15 +144,23 @@
             // 
             this.listBoxEvents.FormattingEnabled = true;
             this.listBoxEvents.ItemHeight = 16;
-            this.listBoxEvents.Location = new System.Drawing.Point(343, 51);
+            this.listBoxEvents.Location = new System.Drawing.Point(18, 52);
             this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(502, 372);
+            this.listBoxEvents.Size = new System.Drawing.Size(496, 324);
             this.listBoxEvents.TabIndex = 11;
             this.listBoxEvents.DoubleClick += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
             // 
             // groupBoxNewEvent
             // 
+            this.groupBoxNewEvent.Controls.Add(this.labelDateSep2);
+            this.groupBoxNewEvent.Controls.Add(this.comboBoxDateY);
+            this.groupBoxNewEvent.Controls.Add(this.labelDateSep1);
+            this.groupBoxNewEvent.Controls.Add(this.labelTimeSeparator);
+            this.groupBoxNewEvent.Controls.Add(this.comboBoxDateM);
+            this.groupBoxNewEvent.Controls.Add(this.comboBoxTimeMM);
+            this.groupBoxNewEvent.Controls.Add(this.comboBoxDateD);
             this.groupBoxNewEvent.Controls.Add(this.buttonSave);
+            this.groupBoxNewEvent.Controls.Add(this.comboBoxTimeHH);
             this.groupBoxNewEvent.Controls.Add(this.labelName);
             this.groupBoxNewEvent.Controls.Add(this.labelDate);
             this.groupBoxNewEvent.Controls.Add(this.labelTime);
@@ -168,14 +170,95 @@
             this.groupBoxNewEvent.Controls.Add(this.textBoxOrganiser);
             this.groupBoxNewEvent.Controls.Add(this.textBoxName);
             this.groupBoxNewEvent.Controls.Add(this.textBoxPlace);
-            this.groupBoxNewEvent.Controls.Add(this.textBoxDate);
-            this.groupBoxNewEvent.Controls.Add(this.textBoxTime);
             this.groupBoxNewEvent.Location = new System.Drawing.Point(12, 51);
             this.groupBoxNewEvent.Name = "groupBoxNewEvent";
-            this.groupBoxNewEvent.Size = new System.Drawing.Size(297, 364);
+            this.groupBoxNewEvent.Size = new System.Drawing.Size(362, 372);
             this.groupBoxNewEvent.TabIndex = 14;
             this.groupBoxNewEvent.TabStop = false;
             this.groupBoxNewEvent.Text = "Nowe wydarzenie";
+            // 
+            // labelDateSep2
+            // 
+            this.labelDateSep2.AutoSize = true;
+            this.labelDateSep2.Location = new System.Drawing.Point(259, 96);
+            this.labelDateSep2.Name = "labelDateSep2";
+            this.labelDateSep2.Size = new System.Drawing.Size(13, 17);
+            this.labelDateSep2.TabIndex = 22;
+            this.labelDateSep2.Text = "-";
+            // 
+            // comboBoxDateY
+            // 
+            this.comboBoxDateY.FormattingEnabled = true;
+            this.comboBoxDateY.Location = new System.Drawing.Point(275, 94);
+            this.comboBoxDateY.Name = "comboBoxDateY";
+            this.comboBoxDateY.Size = new System.Drawing.Size(65, 24);
+            this.comboBoxDateY.TabIndex = 4;
+            this.comboBoxDateY.DropDown += new System.EventHandler(this.comboBox_DropDown);
+            // 
+            // labelDateSep1
+            // 
+            this.labelDateSep1.AutoSize = true;
+            this.labelDateSep1.Location = new System.Drawing.Point(190, 96);
+            this.labelDateSep1.Name = "labelDateSep1";
+            this.labelDateSep1.Size = new System.Drawing.Size(13, 17);
+            this.labelDateSep1.TabIndex = 21;
+            this.labelDateSep1.Text = "-";
+            // 
+            // labelTimeSeparator
+            // 
+            this.labelTimeSeparator.AutoSize = true;
+            this.labelTimeSeparator.Location = new System.Drawing.Point(233, 143);
+            this.labelTimeSeparator.Name = "labelTimeSeparator";
+            this.labelTimeSeparator.Size = new System.Drawing.Size(12, 17);
+            this.labelTimeSeparator.TabIndex = 21;
+            this.labelTimeSeparator.Text = ":";
+            // 
+            // comboBoxDateM
+            // 
+            this.comboBoxDateM.FormattingEnabled = true;
+            this.comboBoxDateM.Location = new System.Drawing.Point(207, 94);
+            this.comboBoxDateM.Name = "comboBoxDateM";
+            this.comboBoxDateM.Size = new System.Drawing.Size(47, 24);
+            this.comboBoxDateM.TabIndex = 3;
+            this.comboBoxDateM.DropDown += new System.EventHandler(this.comboBox_DropDown);
+            // 
+            // comboBoxTimeMM
+            // 
+            this.comboBoxTimeMM.FormattingEnabled = true;
+            this.comboBoxTimeMM.Location = new System.Drawing.Point(259, 141);
+            this.comboBoxTimeMM.Name = "comboBoxTimeMM";
+            this.comboBoxTimeMM.Size = new System.Drawing.Size(81, 24);
+            this.comboBoxTimeMM.TabIndex = 6;
+            this.comboBoxTimeMM.DropDown += new System.EventHandler(this.comboBox_DropDown);
+            // 
+            // comboBoxDateD
+            // 
+            this.comboBoxDateD.FormattingEnabled = true;
+            this.comboBoxDateD.Location = new System.Drawing.Point(137, 94);
+            this.comboBoxDateD.Name = "comboBoxDateD";
+            this.comboBoxDateD.Size = new System.Drawing.Size(47, 24);
+            this.comboBoxDateD.TabIndex = 2;
+            this.comboBoxDateD.DropDown += new System.EventHandler(this.comboBox_DropDown);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(249, 307);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(91, 28);
+            this.buttonSave.TabIndex = 19;
+            this.buttonSave.Text = "Zapisz";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Visible = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // comboBoxTimeHH
+            // 
+            this.comboBoxTimeHH.FormattingEnabled = true;
+            this.comboBoxTimeHH.Location = new System.Drawing.Point(137, 141);
+            this.comboBoxTimeHH.Name = "comboBoxTimeHH";
+            this.comboBoxTimeHH.Size = new System.Drawing.Size(81, 24);
+            this.comboBoxTimeHH.TabIndex = 5;
+            this.comboBoxTimeHH.DropDown += new System.EventHandler(this.comboBox_DropDown);
             // 
             // openFileDialog1
             // 
@@ -190,7 +273,7 @@
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(913, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1004, 28);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -237,7 +320,7 @@
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(712, 429);
+            this.buttonRemove.Location = new System.Drawing.Point(431, 386);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(83, 31);
             this.buttonRemove.TabIndex = 17;
@@ -247,34 +330,33 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(618, 430);
+            this.buttonEdit.Location = new System.Drawing.Point(342, 386);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(88, 30);
+            this.buttonEdit.Size = new System.Drawing.Size(83, 31);
             this.buttonEdit.TabIndex = 18;
             this.buttonEdit.Text = "Edytuj";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // buttonSave
+            // groupBoxMyEvents
             // 
-            this.buttonSave.Location = new System.Drawing.Point(179, 306);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(91, 28);
-            this.buttonSave.TabIndex = 19;
-            this.buttonSave.Text = "Zapisz";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Visible = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.groupBoxMyEvents.Controls.Add(this.listBoxEvents);
+            this.groupBoxMyEvents.Controls.Add(this.buttonRemove);
+            this.groupBoxMyEvents.Controls.Add(this.buttonEdit);
+            this.groupBoxMyEvents.Location = new System.Drawing.Point(397, 51);
+            this.groupBoxMyEvents.Name = "groupBoxMyEvents";
+            this.groupBoxMyEvents.Size = new System.Drawing.Size(536, 426);
+            this.groupBoxMyEvents.TabIndex = 20;
+            this.groupBoxMyEvents.TabStop = false;
+            this.groupBoxMyEvents.Text = "Moje wydarzenia";
             // 
             // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 472);
-            this.Controls.Add(this.buttonEdit);
-            this.Controls.Add(this.buttonRemove);
+            this.ClientSize = new System.Drawing.Size(1004, 498);
+            this.Controls.Add(this.groupBoxMyEvents);
             this.Controls.Add(this.groupBoxNewEvent);
-            this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainApp";
@@ -283,6 +365,7 @@
             this.groupBoxNewEvent.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBoxMyEvents.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,8 +379,6 @@
         private System.Windows.Forms.Label labelOrganiser;
         private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxDate;
-        private System.Windows.Forms.TextBox textBoxTime;
         private System.Windows.Forms.TextBox textBoxPlace;
         private System.Windows.Forms.TextBox textBoxOrganiser;
         private System.Windows.Forms.Button buttonAddEvent;
@@ -314,6 +395,15 @@
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.GroupBox groupBoxMyEvents;
+        private System.Windows.Forms.ComboBox comboBoxTimeHH;
+        private System.Windows.Forms.ComboBox comboBoxTimeMM;
+        private System.Windows.Forms.Label labelTimeSeparator;
+        private System.Windows.Forms.ComboBox comboBoxDateD;
+        private System.Windows.Forms.ComboBox comboBoxDateM;
+        private System.Windows.Forms.ComboBox comboBoxDateY;
+        private System.Windows.Forms.Label labelDateSep2;
+        private System.Windows.Forms.Label labelDateSep1;
     }
 }
 

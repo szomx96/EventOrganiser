@@ -13,6 +13,9 @@ namespace Kolokwium.Views
         string EventTime { get; set; }
         string EventPlace { get; set; }
         string EventOrganiser { get; set; }
+        string[] CBoxElements { get; set; }
+        string[] DateElements { get; set; }
+        string[] TimeElements { get; set; }
 
 
         Organiser Org { get; set; }       
@@ -24,6 +27,8 @@ namespace Kolokwium.Views
         event Action <object, EventArgs> VAddEvent;
         event Action<object, EventArgs> VRemoveEvent;
         event Action<object, EventArgs> VEditEvent;
+        event Action<object, EventArgs> VCBoxDropDown;
+        event Action<object, EventArgs> VEditClick;
     
 
 
