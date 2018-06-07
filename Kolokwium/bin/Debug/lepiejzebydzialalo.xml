@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <EventName>adf</EventName>
+    <EventDate>adsf</EventDate>
+    <EventTime>adfs</EventTime>
+    <EventPlace>adf</EventPlace>
+    <EventOrganiser>adsf</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>dasf</EventName>
+    <EventDate>afd</EventDate>
+    <EventTime>adf</EventTime>
+    <EventPlace>adsf</EventPlace>
+    <EventOrganiser>adf</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>adfs</EventName>
+    <EventDate>adsf</EventDate>
+    <EventTime>adsf</EventTime>
+    <EventPlace>adsf</EventPlace>
+    <EventOrganiser>adf</EventOrganiser>
+  </Event>
+</ArrayOfEvent>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <EventName>ghf</EventName>
+    <EventDate>dfgh</EventDate>
+    <EventTime>dfgh</EventTime>
+    <EventPlace>dgfh</EventPlace>
+    <EventOrganiser>dfgh</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>dfgh</EventName>
+    <EventDate>dgfh</EventDate>
+    <EventTime>dgfh</EventTime>
+    <EventPlace>gfh</EventPlace>
+    <EventOrganiser>dgh</EventOrganiser>
+  </Event>
+</ArrayOfEvent>

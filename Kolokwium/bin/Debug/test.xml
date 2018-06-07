@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <EventName>nazwa1</EventName>
+    <EventDate>dzis</EventDate>
+    <EventTime>14:00</EventTime>
+    <EventPlace>tutaj</EventPlace>
+    <EventOrganiser>ja</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>nazwa2</EventName>
+    <EventDate>jutro</EventDate>
+    <EventTime>14:22</EventTime>
+    <EventPlace>tam</EventPlace>
+    <EventOrganiser>oni</EventOrganiser>
+  </Event>
+</ArrayOfEvent>

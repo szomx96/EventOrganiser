@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <EventName>fa</EventName>
+    <EventDate>fds</EventDate>
+    <EventTime>adf</EventTime>
+    <EventPlace>adsf</EventPlace>
+    <EventOrganiser>adf</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>blah </EventName>
+    <EventDate>fdshjksa</EventDate>
+    <EventTime>adf</EventTime>
+    <EventPlace>adsf</EventPlace>
+    <EventOrganiser>adf</EventOrganiser>
+  </Event>
+</ArrayOfEvent>
