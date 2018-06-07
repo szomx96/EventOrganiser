@@ -20,7 +20,28 @@ namespace Kolokwium.Presenters
             this.model = model;
 
             view.VAddEvent += View_AddEvent;
+            view.VRemoveEvent += View_RemoveEvent;
+            view.VEditEvent += View_EditEvent;
            
+        }
+
+        private void View_RemoveEvent(object arg1, EventArgs arg2)
+        {
+            view.Org.eventList.RemoveAt(view.SelectedIndex);
+        }
+
+        private void View_EditEvent(object arg1, EventArgs arg2)
+        {          
+
+            Event toEdit = view.Org.eventList[view.SelectedIndex];
+
+            view.NewEvent = model.EditEvent(toEdit, view.EventName, view.EventDate, view.EventTime,
+                view.EventPlace, view.EventOrganiser);
+
+            view.Org.eventList.RemoveAt(view.SelectedIndex);
+            view.Org.eventList.Add(view.NewEvent);
+            
+
         }
 
         private void View_AddEvent(object arg1, EventArgs arg2)
@@ -33,21 +54,9 @@ namespace Kolokwium.Presenters
             view.NewEvent = model.CreateNewEvent(view.EventName, view.EventDate, view.EventTime,
                 view.EventPlace, view.EventOrganiser);
 
-            view.Org.eventList.Add(model.GetEvent(view.NewEvent));
+            view.Org.eventList.Add(view.NewEvent);
 
         }
-
-        
-
-                
-        //Views.eventList = Model.eventlist.add(New event)
-
-        
-
-      
-
-        
-
 
 
     }

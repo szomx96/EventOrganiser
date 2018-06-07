@@ -49,6 +49,9 @@
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxNewEvent.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -151,10 +154,11 @@
             this.listBoxEvents.Name = "listBoxEvents";
             this.listBoxEvents.Size = new System.Drawing.Size(502, 372);
             this.listBoxEvents.TabIndex = 11;
-            this.listBoxEvents.SelectedIndexChanged += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
+            this.listBoxEvents.DoubleClick += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
             // 
             // groupBoxNewEvent
             // 
+            this.groupBoxNewEvent.Controls.Add(this.buttonSave);
             this.groupBoxNewEvent.Controls.Add(this.labelName);
             this.groupBoxNewEvent.Controls.Add(this.labelDate);
             this.groupBoxNewEvent.Controls.Add(this.labelTime);
@@ -231,11 +235,44 @@
             // 
             this.saveFileDialog1.DefaultExt = "xml";
             // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(712, 429);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(83, 31);
+            this.buttonRemove.TabIndex = 17;
+            this.buttonRemove.Text = "Usuń";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(618, 430);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(88, 30);
+            this.buttonEdit.TabIndex = 18;
+            this.buttonEdit.Text = "Edytuj";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(179, 306);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(91, 28);
+            this.buttonSave.TabIndex = 19;
+            this.buttonSave.Text = "Zapisz";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Visible = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 472);
+            this.Controls.Add(this.buttonEdit);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.groupBoxNewEvent);
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.menuStrip1);
@@ -274,6 +311,9 @@
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
 

@@ -15,15 +15,15 @@ namespace Kolokwium.Views
         string EventOrganiser { get; set; }
 
 
-        Organiser Org { get; set; }
-       
+        Organiser Org { get; set; }       
         Event NewEvent { get; set; }
-        int SelectedIndex { get; set; }
 
-   
+        int SelectedIndex { get; set; }  
 
 
         event Action <object, EventArgs> VAddEvent;
+        event Action<object, EventArgs> VRemoveEvent;
+        event Action<object, EventArgs> VEditEvent;
     
 
 

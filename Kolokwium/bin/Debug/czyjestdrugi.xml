@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Event>
+    <EventName>pierwszy</EventName>
+    <EventDate>fdslkj</EventDate>
+    <EventTime>fsdjklj</EventTime>
+    <EventPlace>fdsalkj</EventPlace>
+    <EventOrganiser>fdslkj</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>drugi</EventName>
+    <EventDate>fjdsklj</EventDate>
+    <EventTime>fdslkj</EventTime>
+    <EventPlace>fsdalkj</EventPlace>
+    <EventOrganiser>fsdlakj</EventOrganiser>
+  </Event>
+  <Event>
+    <EventName>trzeci</EventName>
+    <EventDate>fkldsj</EventDate>
+    <EventTime>fdslkj</EventTime>
+    <EventPlace>fdlsj</EventPlace>
+    <EventOrganiser>fsldkj</EventOrganiser>
+  </Event>
+</ArrayOfEvent>

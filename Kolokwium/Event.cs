@@ -57,11 +57,6 @@ namespace Kolokwium
             eventList = new List<Event>();
         }
 
-        public void AddItem(Event value) {
-            
-            eventList.Add(value);
-          
-        }
 
     }
 

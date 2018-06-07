@@ -17,10 +17,20 @@ namespace Kolokwium.Models
             return new Event(EventName, EventDate, EventTime, EventPlace, EventOrganiser);
         }
 
-        internal Event GetEvent(Event ev)
+        internal Event EditEvent(Event ev, string eventName, string eventDate, string eventTime,
+                string eventPlace, string eventOrganiser)
         {
-            return ev;
+            ev.EventName = eventName;
+            ev.EventDate = eventDate;
+            ev.EventTime = eventTime;
+            ev.EventPlace = eventPlace;
+            ev.EventOrganiser = eventOrganiser;
+
+            return ev;            
+
         }
+
+       
 
         internal Organiser CreateNewOrganiser()
         {

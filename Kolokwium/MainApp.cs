@@ -110,13 +110,58 @@ namespace Kolokwium
             {
                 if (VAddEvent != null)
                 {
-                    VAddEvent(sender, e);
-                    //Og.AddItem(NewEvent);                    
+                    VAddEvent(sender, e);                                  
 
-                    AddEvent(NewEvent);
+                    AddEvent(NewEvent); //dodawnie do listy
+                    buttonSave.Visible = false;
                 }
             }
         }
+
+        public event Action<object, EventArgs> VRemoveEvent;
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if(listBoxEvents.SelectedIndex > -1)
+            {
+                if(VRemoveEvent != null)
+                {
+                    VRemoveEvent(sender, e); 
+                    RemoveEvent(); // tylko z listy
+                }
+            }
+        }
+
+        public void RemoveEvent()
+        {
+            listBoxEvents.Items.RemoveAt(SelectedIndex);
+        }
+
+        public event Action<object, EventArgs> VEditEvent;
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if(listBoxEvents.SelectedIndex > -1)
+            {
+                textBoxName.Text = Org.eventList[SelectedIndex].EventName;
+                textBoxDate.Text = Org.eventList[SelectedIndex].EventDate;
+                textBoxTime.Text = Org.eventList[SelectedIndex].EventTime;
+                textBoxPlace.Text = Org.eventList[SelectedIndex].EventPlace;
+                textBoxOrganiser.Text = Org.eventList[SelectedIndex].EventOrganiser;
+
+                buttonSave.Visible = true;          
+            }
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            VEditEvent(sender, e);
+            EditEvent(NewEvent);
+            buttonSave.Visible = false;
+        }
+
+
 
         public void AddEvent(Event newEvent){
 
@@ -128,7 +173,17 @@ namespace Kolokwium
                 ClearTextBoxes();                
             }
 
-        }   
+        }
+
+        public void EditEvent(Event newEvent)
+        {
+            listBoxEvents.Items[SelectedIndex] = newEvent.EventDate + " " + newEvent.EventTime +
+                    " " + newEvent.EventName;
+
+                ClearTextBoxes();          
+
+        }
+
 
         private bool IsNotEmpty(TextBox t)
         {
@@ -158,9 +213,7 @@ namespace Kolokwium
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
             EventPreview eventP = new EventPreview(this);
-            DialogResult dr = eventP.ShowDialog(this);     
-            
-
+            DialogResult dr = eventP.ShowDialog(this);
         }   
 
        
@@ -176,6 +229,7 @@ namespace Kolokwium
 
         private void wczytajToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            listBoxEvents.Items.Clear();
             openFileDialog1.ShowDialog();
             Org = LoadXML.LoadData(openFileDialog1.FileName);
             FillListBox();
@@ -186,5 +240,7 @@ namespace Kolokwium
             saveFileDialog1.ShowDialog();
             SaveXML.SaveData(Org.eventList, saveFileDialog1.FileName);
         }
+
+        
     }
 }
