@@ -55,10 +55,10 @@ namespace Kolokwium.Presenters
 
             view.NewEvent = model.EditEvent(toEdit, view.EventName, view.EventDate, view.EventTime,
                 view.EventPlace, view.EventOrganiser);
-
-            view.Org.eventList.RemoveAt(view.SelectedIndex);
-            view.Org.eventList.Add(view.NewEvent);
             
+            view.Org.eventList.Insert(view.SelectedIndex, view.NewEvent);
+            view.Org.eventList.RemoveAt(view.SelectedIndex+1);
+
 
         }
 

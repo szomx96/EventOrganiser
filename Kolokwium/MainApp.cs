@@ -19,14 +19,20 @@ namespace Kolokwium
 
         }
 
-        // public Event EventArray { get; set; }
-
-        //public Organiser Og = new Organiser();
-
         public Organiser Org{get; set;}
         public string[] CBoxElements { get; set; }
-        
+        public Event NewEvent { get; set; }
+        public string[] DateElements { get; set; }
+        public string[] TimeElements { get; set; }
 
+
+        public event Action<object, EventArgs> VAddEvent;
+        public event Action<object, EventArgs> VRemoveEvent;
+        public event Action<object, EventArgs> VEditEvent;
+        public event Action<object, EventArgs> VEditClick;
+        public event Action<object, EventArgs> VCBoxDropDown;
+
+        #region getters/setters
         public string EventName {
 
             get
@@ -49,9 +55,9 @@ namespace Kolokwium
             }
             set
             {
-                comboBoxDateD.Text = value;
-                comboBoxDateM.Text = value;
-                comboBoxDateY.Text = value;            
+                comboBoxDateD.SelectedItem = value;
+                comboBoxDateM.SelectedItem = value;
+                comboBoxDateY.SelectedItem = value;            
             }
         }
 
@@ -63,8 +69,8 @@ namespace Kolokwium
             }
             set
             {
-                comboBoxTimeMM.Text = value;
-                comboBoxTimeHH.Text = value;
+                comboBoxTimeMM.SelectedItem = value;
+                comboBoxTimeHH.SelectedItem = value;
                 
             }
 
@@ -91,7 +97,7 @@ namespace Kolokwium
                 textBoxOrganiser.Text = value;
             }
         }
-        public Event NewEvent { get; set; }
+       
 
        
 
@@ -106,16 +112,14 @@ namespace Kolokwium
             }
         }
 
-        public string[] DateElements { get; set; }
-        public string[] TimeElements { get; set; }
-       
+        #endregion
 
-        public event Action <object, EventArgs> VAddEvent;
+        #region actions
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            if (IsNotEmpty(textBoxName) && /*IsNotEmpty(textBoxDate) && /*IsNotEmpty(textBoxTime) &&*/
-                IsNotEmpty(textBoxPlace) && IsNotEmpty(textBoxOrganiser))
+            if (IsNotEmpty(textBoxName) && AreComboboxesNotEmpty() 
+                && IsNotEmpty(textBoxPlace) && IsNotEmpty(textBoxOrganiser))
             {
                 if (VAddEvent != null)
                 {
@@ -125,9 +129,13 @@ namespace Kolokwium
                     buttonSave.Visible = false;
                 }
             }
+            else
+            {
+                MessageBox.Show("Wypełnij wszystkie pola", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
         }
 
-        public event Action<object, EventArgs> VRemoveEvent;
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
@@ -141,13 +149,6 @@ namespace Kolokwium
             }
         }
 
-        public void RemoveEvent()
-        {
-            listBoxEvents.Items.RemoveAt(SelectedIndex);
-        }
-
-        public event Action<object, EventArgs> VEditEvent;
-        public event Action<object, EventArgs> VEditClick;
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
@@ -157,13 +158,18 @@ namespace Kolokwium
                 if (VEditClick != null)
                 {
                     VEditClick(sender, e);
+                    VCBoxDropDown(comboBoxDateD, e);
+                    VCBoxDropDown(comboBoxDateM, e);
+                    VCBoxDropDown(comboBoxDateY, e);
+                    VCBoxDropDown(comboBoxTimeHH, e);
+                    VCBoxDropDown(comboBoxTimeMM, e);
 
-                    textBoxName.Text = Org.eventList[SelectedIndex].EventName;
-                    comboBoxDateD.Text = DateElements[0];
-                    comboBoxDateM.Text = DateElements[1];
-                    comboBoxDateY.Text = DateElements[2];
-                    comboBoxTimeHH.Text = TimeElements[0];
-                    comboBoxTimeMM.Text = TimeElements[1];
+                    textBoxName.Text = Org.eventList[SelectedIndex].EventName;                   
+                    comboBoxDateD.SelectedIndex = comboBoxDateD.FindStringExact(DateElements[0]);                    
+                    comboBoxDateM.SelectedIndex = comboBoxDateM.FindStringExact(DateElements[1]);
+                    comboBoxDateY.SelectedIndex = comboBoxDateY.FindStringExact(DateElements[2]);                   
+                    comboBoxTimeHH.SelectedIndex = comboBoxTimeHH.FindStringExact(TimeElements[0]);    
+                    comboBoxTimeMM.SelectedIndex = comboBoxTimeMM.FindStringExact(TimeElements[1]);                
                     textBoxPlace.Text = Org.eventList[SelectedIndex].EventPlace;
                     textBoxOrganiser.Text = Org.eventList[SelectedIndex].EventOrganiser;
 
@@ -179,76 +185,15 @@ namespace Kolokwium
             VEditEvent(sender, e);
             EditEvent(NewEvent);
             buttonSave.Visible = false;
-        }
-
-
-
-        public void AddEvent(Event newEvent){
-
-            if(!listBoxEvents.Items.Contains(newEvent)){                            
-
-                 listBoxEvents.Items.Add(newEvent.EventDate + " " + newEvent.EventTime + 
-                     " " + newEvent.EventName);
-
-                ClearTextBoxes();                
-            }
-
-        }
-
-        public void EditEvent(Event newEvent)
-        {
-            listBoxEvents.Items[SelectedIndex] = newEvent.EventDate + " " + newEvent.EventTime +
-                    " " + newEvent.EventName;
-
-                ClearTextBoxes();          
-
-        }
-
-
-        private bool IsNotEmpty(TextBox t)
-        {
-            if(t.Text == "")
-            {
-                MessageBox.Show("Wypełnij wszystkie pola", "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private void ClearTextBoxes()
-        {
-            textBoxName.Clear();
-            comboBoxDateD.Text = "";
-            comboBoxDateM.Text = "";
-            comboBoxDateY.Text = "";
-            comboBoxTimeHH.Text = "";
-            comboBoxTimeMM.Text = "";
-            textBoxPlace.Clear();
-            textBoxOrganiser.Clear();
-        }
-
-       
+        }    
+ 
 
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
             EventPreview eventP = new EventPreview(this);
             DialogResult dr = eventP.ShowDialog(this);
-        }   
-
-       
-
-        private void FillListBox()
-        {  
-            foreach (var e in Org.eventList)
-            {
-                AddEvent(e);
-            }                    
-          
-        }
+        }        
+      
 
         private void wczytajToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -264,8 +209,6 @@ namespace Kolokwium
             SaveXML.SaveData(Org.eventList, saveFileDialog1.FileName);
         }
 
-        public event Action<object, EventArgs> VCBoxDropDown;
-
         private void comboBox_DropDown(object sender, EventArgs e)
         {
             if(VCBoxDropDown != null)
@@ -274,12 +217,88 @@ namespace Kolokwium
                 
             }            
         }
-        
-        //string[] ReturnDate()
-        //{
 
-        //}
+        #endregion
 
-        
+        #region MyFunctions
+
+        public bool AreComboboxesNotEmpty()
+        {
+            if(comboBoxDateD.SelectedIndex != -1 && comboBoxDateM.SelectedIndex != -1 &&
+                comboBoxDateY.SelectedIndex != -1 && comboBoxTimeHH.SelectedIndex != -1 &&
+                comboBoxTimeMM.SelectedIndex != -1 )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void RemoveEvent()
+        {
+            listBoxEvents.Items.RemoveAt(SelectedIndex);
+        }
+
+        private void FillListBox()
+        {
+            foreach (var e in Org.eventList)
+            {
+                AddEvent(e);
+            }
+
+        }
+
+        private bool IsNotEmpty(TextBox t)
+        {
+            if (t.Text == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ClearTextBoxes()
+        {
+            textBoxName.Clear();
+            comboBoxDateD.SelectedIndex = -1;
+            comboBoxDateM.SelectedIndex = -1;
+            comboBoxDateY.SelectedIndex = -1;
+            comboBoxTimeHH.SelectedIndex = -1;
+            comboBoxTimeMM.SelectedIndex = -1;
+            textBoxPlace.Clear();
+            textBoxOrganiser.Clear();
+        }
+
+        public void AddEvent(Event newEvent)
+        {
+
+            if (!listBoxEvents.Items.Contains(newEvent))
+            {
+
+                listBoxEvents.Items.Add(newEvent.EventDate + " " + newEvent.EventTime +
+                    " " + newEvent.EventName);
+
+                ClearTextBoxes();
+            }
+
+        }
+
+        public void EditEvent(Event newEvent)
+        {
+            listBoxEvents.Items[SelectedIndex] = newEvent.EventDate + " " + newEvent.EventTime +
+                    " " + newEvent.EventName;
+
+            ClearTextBoxes();
+
+        }
+
+        #endregion
+
+
     }
 }

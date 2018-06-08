@@ -188,6 +188,7 @@
             // 
             // comboBoxDateY
             // 
+            this.comboBoxDateY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDateY.FormattingEnabled = true;
             this.comboBoxDateY.Location = new System.Drawing.Point(275, 94);
             this.comboBoxDateY.Name = "comboBoxDateY";
@@ -215,6 +216,7 @@
             // 
             // comboBoxDateM
             // 
+            this.comboBoxDateM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDateM.FormattingEnabled = true;
             this.comboBoxDateM.Location = new System.Drawing.Point(207, 94);
             this.comboBoxDateM.Name = "comboBoxDateM";
@@ -224,6 +226,7 @@
             // 
             // comboBoxTimeMM
             // 
+            this.comboBoxTimeMM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTimeMM.FormattingEnabled = true;
             this.comboBoxTimeMM.Location = new System.Drawing.Point(259, 141);
             this.comboBoxTimeMM.Name = "comboBoxTimeMM";
@@ -233,6 +236,7 @@
             // 
             // comboBoxDateD
             // 
+            this.comboBoxDateD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDateD.FormattingEnabled = true;
             this.comboBoxDateD.Location = new System.Drawing.Point(137, 94);
             this.comboBoxDateD.Name = "comboBoxDateD";
@@ -253,6 +257,7 @@
             // 
             // comboBoxTimeHH
             // 
+            this.comboBoxTimeHH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTimeHH.FormattingEnabled = true;
             this.comboBoxTimeHH.Location = new System.Drawing.Point(137, 141);
             this.comboBoxTimeHH.Name = "comboBoxTimeHH";
@@ -323,7 +328,7 @@
             this.buttonRemove.Location = new System.Drawing.Point(431, 386);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(83, 31);
-            this.buttonRemove.TabIndex = 17;
+            this.buttonRemove.TabIndex = 18;
             this.buttonRemove.Text = "Usuń";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
@@ -333,7 +338,7 @@
             this.buttonEdit.Location = new System.Drawing.Point(342, 386);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(83, 31);
-            this.buttonEdit.TabIndex = 18;
+            this.buttonEdit.TabIndex = 17;
             this.buttonEdit.Text = "Edytuj";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
@@ -359,8 +364,10 @@
             this.Controls.Add(this.groupBoxNewEvent);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1022, 545);
+            this.MinimumSize = new System.Drawing.Size(1022, 545);
             this.Name = "MainApp";
-            this.Text = "Form1";
+            this.Text = "EventOrganiser";
             this.groupBoxNewEvent.ResumeLayout(false);
             this.groupBoxNewEvent.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
